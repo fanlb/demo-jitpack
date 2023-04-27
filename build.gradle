@@ -1,5 +1,23 @@
 plugins {
     id 'com.android.library'
+    id 'maven-publish'
+}
+
+group = 'com.team.mylibrary'
+version = '0.2'
+
+afterEvaluate {
+    publishing {
+        publications {
+            // Creates a Maven publication called "release".
+            release(MavenPublication) {
+                from components.release
+                groupId = 'com.team.mylibrary'
+                artifactId = 'mylibrary'
+                version = '0.2'
+            }
+        }
+    }
 }
 
 android {
